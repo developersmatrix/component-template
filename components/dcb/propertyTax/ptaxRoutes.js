@@ -4,7 +4,7 @@ import ptax from "./ptaxControllers.js";
 
 const router = express.Router();
 
-router.get("/general", ptax.getPtaxGeneral);
-router.post("/", ptax.postPtaxGeneral);
+router.get("/general/:startYear/:endYear", ptax.getPtaxGeneral);
+router.post("/general", ptax.postPtaxGeneral);
 
 export default router;
