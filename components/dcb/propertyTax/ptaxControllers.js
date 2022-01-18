@@ -1,18 +1,28 @@
 // Property tax general Information data
 
-import { ptaxGeneralService } from "./ptaxServices.js";
+import { ptaxGeneralService, ptaxCollectionService } from "./ptaxServices.js";
 
 const getPtaxGeneral = async (req, res, next) => {
-  const startYear = res.params.startYear;
-  const endYear = res.params.endYear;
+  const financialYear = req.query.financialYear;
+
   try {
-    const responseData = await ptaxGeneralService();
+    const responseData = await ptaxGeneralService(financialYear);
     res.status(200).json(responseData);
   } catch (error) {
     next(error);
   }
 };
 
-const postPtaxGeneral = (req, res, next) => {};
+const getPtaxCollection = async (req, res, next) => {
+  const month = req.query.month;
 
-export default { getPtaxGeneral, postPtaxGeneral };
+  try {
+    const responseData = await ptaxCollectionService(month);
+    console.log(responseData);
+    res.status(200).json(responseData);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export default { getPtaxGeneral, getPtaxCollection };
