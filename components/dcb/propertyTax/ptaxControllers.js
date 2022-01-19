@@ -18,7 +18,6 @@ const getPtaxCollection = async (req, res, next) => {
 
   try {
     const responseData = await ptaxCollectionService(month);
-    console.log(responseData);
     res.status(200).json(responseData);
   } catch (error) {
     next(error);

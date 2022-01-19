@@ -8,16 +8,15 @@ export const ptaxGeneralData = async (startYear, endYear) => {
     });
     return data;
   } catch (error) {
-    return new Error(error);
+    throw error;
   }
 };
 
 export const ptaxCollectionData = async (month) => {
   try {
     const data = await ptaxCollection.find();
-    console.log(data);
     return data;
   } catch (error) {
-    return new Error(error);
+    throw error;
   }
 };
